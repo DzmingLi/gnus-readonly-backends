@@ -1,0 +1,14 @@
+#+title: nnpublicinbox
+
+Read-only Gnus backend for a single public-inbox mailing-list thread. It
+downloads =t.mbox.gz= and preserves each email's Message-ID, References,
+In-Reply-To, MIME body and Gnus article number. Gnus owns read marks.
+
+The group for
+=https://list.orgmode.org/orgmode/875xwqj4tl.fsf@localhost/=
+is =nnpublicinbox:orgmode/875xwqj4tl.fsf@localhost= on server
+=https://list.orgmode.org=. Subscribe interactively with
+=M-x nnpublicinbox-subscribe-thread=.
+
+This archive backend cannot post mail. Replies to a mailing list should use
+Gnus's mail reply command and the user's configured outbound mail transport.
