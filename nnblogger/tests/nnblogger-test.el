@@ -12,6 +12,21 @@
     (insert-file-contents (expand-file-name name nnblogger-test--directory))
     (buffer-string)))
 
+(ert-deftest nnblogger-request-text-skips-http-headers ()
+  (let ((body (nnblogger-test--fixture "feed.xml")))
+    (cl-letf (((symbol-function 'url-retrieve-synchronously)
+               (lambda (&rest _)
+                 (let ((buffer (generate-new-buffer " *nnblogger-response*")))
+                   (with-current-buffer buffer
+                     (set-buffer-multibyte nil)
+                     (insert "HTTP/1.1 200 OK\r\n"
+                             "Content-Type: application/atom+xml\r\n"
+                             "Connection: close\r\n\r\n"
+                             (encode-coding-string body 'utf-8)))
+                   buffer))))
+      (should (equal (nnblogger--request-text "https://example.test/feed")
+                     body)))))
+
 (ert-deftest nnblogger-parses-atom-and-full-post ()
   (let* ((entry (car (nnblogger--parse-feed
                       (nnblogger-test--fixture "feed.xml"))))

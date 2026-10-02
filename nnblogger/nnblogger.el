@@ -220,9 +220,11 @@
             (error "Blogger request failed: %s"
                    (buffer-substring-no-properties
                     (line-beginning-position) (line-end-position))))
-          (unless (re-search-forward "\\r?\\n\\r?\\n" nil t)
+          (unless (re-search-forward "\r?\n\r?\n" nil t)
             (error "Blogger response has no body"))
-          (buffer-substring-no-properties (point) (point-max)))
+          (decode-coding-string
+           (buffer-substring-no-properties (point) (point-max))
+           'utf-8))
       (kill-buffer (current-buffer)))))
 
 (defun nnblogger--fetch (record)
