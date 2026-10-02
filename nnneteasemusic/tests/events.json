@@ -1,0 +1,1 @@
+{"code":200,"events":[{"id":301,"eventTime":1788057600000,"json":"{\"msg\":\"云村正文\",\"song\":{\"id\":88,\"name\":\"测试歌曲\",\"artists\":[{\"name\":\"测试音乐人\"}],\"album\":{\"name\":\"测试专辑\"}}}","pics":[{"originUrl":"http://img.example/music.jpg"}],"user":{"userId":9,"nickname":"音乐用户"},"info":{"commentThread":{"resourceTitle":"分享单曲"}}}]}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:media="http://search.yahoo.com/mrss/">
+  <title>Rose Horowitch | The Atlantic</title>
+  <entry>
+    <id>tag:theatlantic.com,2026:50-687618</id>
+    <content type="html">&lt;p class="dropcap"&gt;&lt;span class="smallcaps"&gt;Opening words&lt;/span&gt; continue.&lt;/p&gt;&lt;p&gt;First section.&lt;/p&gt;&lt;p class="dropcap"&gt;&lt;span class="smallcaps"&gt;Second section&lt;/span&gt; continues.&lt;/p&gt;</content>
+    <author><name>Rose Horowitch</name></author>
+    <media:content url="https://cdn.theatlantic.com/lead.jpg" />
+    <title type="html">The End of Reading Is Here</title>
+    <published>2026-07-08T09:55:00Z</published>
+    <link href="https://www.theatlantic.com/example/687618/?utm_source=feed"
+          rel="alternate" type="text/html" />
+  </entry>
+</feed>

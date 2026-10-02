@@ -1,0 +1,24 @@
+#+title: nntheatlantic
+
+Read-only Gnus backend for The Atlantic's official full-content author Atom
+feeds. One author is one Gnus group; each article has a stable article number.
+Gnus stores read and tick marks as usual.
+
+Use =M-x nntheatlantic-subscribe-author= with a slug such as =ian-bogost=.
+With Home Manager, add slugs to
+=hosts/framework16/home/_gnus-subscriptions.nix= under =atlanticAuthors=.
+
+The article body keeps its original paragraphs and includes the feed's lead
+image. Publisher-injected recommendation paragraphs carrying
+=data-id="injected-recirculation-link"= are hidden by default. Set
+=nntheatlantic-show-recirculation-links= to non-nil through Customize to show
+them. The setting applies immediately to cached articles, since the cache
+stores the original feed HTML.
+
+Articles cannot be replied to through this backend. Run the ERT tests with:
+
+#+begin_src sh
+emacs --batch -Q -L nntheatlantic \
+  -l nntheatlantic/tests/nntheatlantic-test.el \
+  -f ert-run-tests-batch-and-exit
+#+end_src

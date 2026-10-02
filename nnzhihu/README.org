@@ -1,0 +1,29 @@
+#+title: nnzhihu
+
+Read-only Gnus backend for Zhihu articles and answers. The supported sources
+match the former Elfeed adapter: personal articles, organization articles,
+and personal answers. Each source is one Gnus group; entries retain stable
+article numbers so Gnus read and tick marks survive refreshes.
+
+Use =M-x nnzhihu-subscribe-articles= for a person's articles, or with a prefix
+argument for an organization's articles. Use =M-x nnzhihu-subscribe-answers=
+for a person's answers. The author ID is the last component of the Zhihu
+profile URL.
+
+The backend uses =firefox-cookies-get= by default and calls =zhihu.el='s ZSE
+signer. Configure the Firefox profile with
+=firefox-cookies-profile-directory= if needed. Nothing is posted to Zhihu.
+
+To declare subscriptions in Home Manager, edit
+=hosts/framework16/home/_gnus-subscriptions.nix=. Use =people/USER= or
+=org/USER= in =zhihuArticles=; use =USER= in =zhihuAnswers=. With the
+declarative Gnus sync enabled, add an interactively subscribed author to this
+file as well, or the next Gnus startup will unsubscribe that group.
+
+Run tests with:
+
+#+begin_src sh
+emacs --batch -Q -L nnzhihu \
+  -l nnzhihu/tests/nnzhihu-test.el \
+  -f ert-run-tests-batch-and-exit
+#+end_src

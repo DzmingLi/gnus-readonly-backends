@@ -1,0 +1,24 @@
+#+title: nnblogger
+
+Read-only Gnus backend for public Blogger posts. Each blog host becomes one
+=posts.HOST= group. The Atom feed supplies titles and dates; if it contains
+only summaries, opening an article fetches the full =post-body= from its web
+page. Images and paragraph formatting are delivered as HTML MIME. Stable
+article numbers let Gnus retain read and tick marks. Private blogs and posting
+are not supported.
+
+Use =M-x nnblogger-subscribe-blog= with a host such as
+=example.blogspot.com=, or add hosts to =bloggerBlogs= in
+=hosts/framework16/home/_gnus-subscriptions.nix=. With declarative Gnus sync
+enabled, put interactively subscribed hosts there as well.
+
+Some blogs disable their feed or redirect it to another service. This backend
+expects the Blogger Atom feed at =/feeds/posts/default=.
+
+Run tests with:
+
+#+begin_src sh
+emacs --batch -Q -L nnblogger \
+  -l nnblogger/tests/nnblogger-test.el \
+  -f ert-run-tests-batch-and-exit
+#+end_src

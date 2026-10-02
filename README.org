@@ -1,0 +1,20 @@
+#+title: Read-only Gnus backends
+
+This collection contains five independent Gnus backends for sources that are
+read here rather than posted to:
+
+| Backend | Source | Group |
+|---------+--------+-------|
+| ~nntheatlantic~ | The Atlantic author feeds | One author |
+| ~nnzhihu~ | Zhihu articles and answers | One author and content type |
+| ~nngcores~ | GCORES talks | One user |
+| ~nnneteasemusic~ | NetEase Music events | One user |
+| ~nnblogger~ | Blogger posts | One blog |
+
+Each directory is a separate Emacs package. Add that directory to
+~load-path~, install its runtime dependencies, and ~require~ the backend you
+want. The individual READMEs document subscriptions and ERT tests.
+
+These backends preserve stable Gnus article numbers and let Gnus own read
+marks. They do not implement posting or replies. Reply-capable backends such
+as ~nndouban~, ~nndiscourse~, and ~nnreddit~ remain separate projects.

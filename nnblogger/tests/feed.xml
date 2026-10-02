@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Dostoe</title>
+  <entry>
+    <id>tag:blogger.com,1999:blog-1.post-42</id>
+    <published>2026-08-15T09:30:00.000+08:00</published>
+    <updated>2026-08-15T09:30:00.000+08:00</updated>
+    <title type="text">定海水操</title>
+    <summary type="text">这是被截断的摘要，水操尤奇在</summary>
+    <link rel="alternate" type="text/html"
+          href="https://dostoe.blogspot.com/2026/08/blog-post_15.html" />
+    <author><name>Dostoe</name></author>
+  </entry>
+</feed>

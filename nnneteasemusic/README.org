@@ -1,0 +1,22 @@
+#+title: nnneteasemusic
+
+Read-only Gnus backend for public NetEase Music user events. One numeric user
+ID is one group; event article numbers remain stable across refreshes so Gnus
+can maintain read and tick marks. No login is required.
+
+Use =M-x nnneteasemusic-subscribe-user=, or add IDs to
+=neteaseMusicEvents= in =hosts/framework16/home/_gnus-subscriptions.nix=.
+With declarative Gnus sync enabled, record interactively subscribed IDs there
+as well.
+
+Article HTML contains the event message, pictures and, when present, the
+official song player. A visible play link remains available in text-based
+Gnus renderers that ignore iframes. Posting and replies are not supported.
+
+Run tests with:
+
+#+begin_src sh
+emacs --batch -Q -L nnneteasemusic \
+  -l nnneteasemusic/tests/nnneteasemusic-test.el \
+  -f ert-run-tests-batch-and-exit
+#+end_src

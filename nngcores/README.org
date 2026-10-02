@@ -1,0 +1,22 @@
+#+title: nngcores
+
+Read-only Gnus backend for public GCORES user talks. A numeric GCORES user ID
+becomes one group; talk entries keep stable article numbers while Gnus stores
+read and tick marks. The backend uses the same latest-talks endpoint and
+radio/video filtering as the former Elfeed adapter, with no login required.
+
+Use =M-x nngcores-subscribe-user=, or add IDs to =gcoresTalks= in
+=hosts/framework16/home/_gnus-subscriptions.nix=. With declarative Gnus sync
+enabled, record interactively subscribed IDs there as well.
+
+The body renderer follows the current Draft.js block/gallery format. Gnus
+displays content as HTML MIME, including cover and gallery images. Posting
+and replies are not supported.
+
+Run tests with:
+
+#+begin_src sh
+emacs --batch -Q -L nngcores \
+  -l nngcores/tests/nngcores-test.el \
+  -f ert-run-tests-batch-and-exit
+#+end_src
