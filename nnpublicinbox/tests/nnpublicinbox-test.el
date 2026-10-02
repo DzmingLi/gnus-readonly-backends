@@ -39,8 +39,9 @@
             (should (equal (plist-get reply :references)
                            "<root@example.org>"))
             (should (string-match-p "\nFrom a quote\n"
-                                    (plist-get (nnpublicinbox--entry record 1)
-                                               :raw)))
+                                    (base64-decode-string
+                                     (plist-get (nnpublicinbox--entry record 1)
+                                                :raw-b64))))
             (nnpublicinbox-retrieve-headers '(1 2) group server)
             (with-current-buffer nntp-server-buffer
               (should (string-match-p

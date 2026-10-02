@@ -143,12 +143,13 @@
                 (insert bytes)
                 (unless (zlib-decompress-region (point-min) (point-max))
                   (error "Invalid public-inbox gzip response"))
-                (decode-coding-string (buffer-string) 'utf-8))))
+                (buffer-string))))
         (kill-buffer (current-buffer))))))
 
 (defun nnpublicinbox--message (raw)
   "Parse one mboxrd message RAW into an entry."
   (with-temp-buffer
+    (set-buffer-multibyte nil)
     (insert raw)
     (goto-char (point-min))
     (unless (re-search-forward "^\r?$" nil t)
@@ -172,11 +173,12 @@
         (replace-match "\\1"))
       (list :id id :subject subject :from from :date date
             :references (replace-regexp-in-string "[\r\n[:space:]]+" " " refs)
-            :raw (buffer-string)))))
+            :raw-b64 (base64-encode-string (buffer-string) t)))))
 
 (defun nnpublicinbox--parse-mbox (mbox)
   "Parse MBOX into unique original mail messages."
   (with-temp-buffer
+    (set-buffer-multibyte nil)
     (insert mbox)
     (goto-char (point-min))
     (let (starts entries)
@@ -292,7 +294,7 @@
         (nnheader-report 'nnpublicinbox "Message is absent from snapshot")
       (with-current-buffer (or buffer nntp-server-buffer)
         (erase-buffer)
-        (insert (plist-get entry :raw)))
+        (insert (base64-decode-string (plist-get entry :raw-b64))))
       (cons group (plist-get entry :number)))))
 
 ;;;###autoload
