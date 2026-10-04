@@ -1,6 +1,6 @@
 #+title: Read-only Gnus backends
 
-This collection contains six independent Gnus backends for sources that are
+This collection contains independent Gnus backends for sources that are
 read here rather than posted to:
 
 | Backend | Source | Group |
@@ -11,6 +11,7 @@ read here rather than posted to:
 | ~nnneteasemusic~ | NetEase Music events | One user |
 | ~nnblogger~ | Blogger posts | One blog |
 | ~nnpublicinbox~ | Public-inbox mailing-list threads | One mail thread |
+| ~nnjanestreet~ | Jane Street blog, full article pages | Blog posts |
 
 Each directory is a separate Emacs package. Add that directory to
 ~load-path~, install its runtime dependencies, and ~require~ the backend you

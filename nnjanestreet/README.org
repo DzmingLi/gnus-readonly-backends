@@ -1,0 +1,25 @@
+#+title: nnjanestreet
+
+Read-only Jane Street blog backend. RSS supplies the article index; opening
+an article retrieves its full page body and author names. Images, code
+blocks and links are retained, with relative URLs resolved against the page.
+
+Add this directory to ~load-path~, then:
+#+begin_src elisp
+(require 'nnjanestreet)
+(add-to-list 'gnus-select-methods '(nnjanestreet "blog.janestreet.com"))
+#+end_src
+Use ~M-x nnjanestreet-subscribe~ to create the ~posts~ group. Gnus manages
+subscription levels, read marks and inbox dispositions. Article numbers and
+full HTML persist as JSON under ~gnus-directory/nnjanestreet/~. A scan updates
+only the index and preserves cached full bodies. A failed page fetch reports
+an error and can be retried; it never labels an excerpt as a full article.
+
+Network methods follow the ordinary Gnus backend API. Commercial Gnus runs
+scans in its background workers; upstream Gnus calls them synchronously.
+The first uncached article fetch may wait for the network. Cached articles
+need no network request. There is no posting or reply support.
+
+#+begin_src sh
+emacs --batch -Q -L . -l tests/nnjanestreet-test.el -f ert-run-tests-batch-and-exit
+#+end_src
